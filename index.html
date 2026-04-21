@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Expense Tracker</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="./script.js" defer></script>
+</head>
+<body>
+    <header>
+        <img src="./images/expense-tracker-logo v2.png" alt="Logo Expense Tracker">
+        <h1>My Expense Tracker</h1>
+        <nav>
+            <ul>
+                <li>Current Month</li>
+                <li>Tweaks</li>
+                <li>About us</li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <section class="summary">
+            <div class="budget-container">
+                <div class="before-jauge">
+                    <div class="budget-left">
+                        <h3>Month Budget</h3>
+                        <div class="budget"></div>
+                    </div>
+                    <button>Edit</button>
+                </div>
+
+                <div class="jauge">
+                    <meter id ="budget-meter" value="50" min = "0" max ="100"></meter>
+                </div>
+            </div>
+
+            <div class="expense-container">
+                <h3>Spent this month</h3>
+                <div class="expense"></div>
+                <p class="expense-mean" id="expense-mean">Mean of expenses : </p>
+            </div>
+
+            <div class="balance-container">
+                <h3>Balance</h3>
+                <div class="balance"></div>
+            </div>
+        </section>
+
+
+        <section class="add-expense">
+            <h2>Add an expense</h2>
+            <form id="expense-form">
+                <input type="text" id="expense-name" placeholder="Description" required>
+                <input type="number" id="expense-amount" placeholder="Amount" required>
+                <input type="date" id="expense-date" required>
+
+                <select name="category" id="category-id" required>
+                    <option value="">--Category--</option>
+                    <option value="food">Food</option>
+                    <option value="transport">Transport</option>
+                    <option value="housing">Housing</option>
+                    <option value="health">Health</option>
+                    <option value="sub">Subscriptions</option>
+                    <option value="shopping">Shopping</option>
+                    <option value="rest">Restaurants</option>
+                    <option value="trips">Trips</option>
+                    <option value="hobbies">Hobbies</option>
+                    <option value="others">Others</option>
+                </select>
+
+                <button type="submit" class="add-button">+ Add</button>
+
+            </form>
+
+        </section>
+
+
+        <section class="transactions">
+            <div class="transactions-header">
+                <h2>Transactions</h2>
+                <div id = "transaction-total" class = "transaction-total"></div> <!--Nombre total de transactions-->
+            </div>
+
+            <div class="transactions-body">
+                <div class="category-filter">
+
+                    <div class="category-class active" data-category="all">
+                        <p class="category-text">All</p>
+                        <div class="category-total"></div> <!--Pour le nombre total de transactions par catégories-->
+                    </div>
+
+                    <div class="category-class" data-category="food">
+                        <p class="category-text">Food</p>
+                        <div class="category-total"></div>
+                    </div>
+
+                    <div class="category-class" data-category="transport">
+                        <p class="category-text">Transport</p>
+                        <div class="category-total"></div>
+                    </div>
+
+                    <div class="category-class" data-category="housing">
+                        <p class="category-text">Housing</p>
+                        <div class="category-total"></div>
+                    </div>
+
+                    <div class="category-class" data-category="health">
+                        <p class="category-text">Health</p>
+                        <div class="category-total"></div>
+                    </div>
+
+                    <div class="category-class" data-category="sub">
+                        <p class="category-text">Subscriptions</p>
+                        <div class="category-total"></div>
+                    </div>
+
+                    <div class="category-class" data-category="shopping">
+                        <p class="category-text">Shopping</p>
+                        <div class="category-total"></div>
+                    </div>
+
+                    <div class="category-class" data-category="rest">
+                        <p class="category-text">Restaurants</p>
+                        <div class="category-total"></div>
+                    </div>
+
+                    <div class="category-class" data-category="trips">
+                        <p class="category-text">Trips</p>
+                        <div class="category-total"></div>
+                    </div>
+
+                    <div class="category-class" data-category="hobbies">
+                        <p class="category-text">Hobbies</p>
+                        <div class="category-total"></div>
+                    </div>
+
+                    <div class="category-class" data-category="others">
+                        <p class="category-text">Others</p>
+                        <div class="category-total"></div>
+                    </div>
+
+
+                </div>
+
+                <button class="delete-all">🗑 Delete all</button>
+
+            </div>
+
+
+            <ul id="transactions-list"></ul>
+        </section>
+    </main>
+
+
+    <footer>
+        Nour &copy; Expense Tracker 2026
+    </footer>
+
+
+
+
+
+
+
+
+
+</body>
+</html>
