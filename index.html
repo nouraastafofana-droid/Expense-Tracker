@@ -5,11 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Expense Tracker</title>
     <link rel="stylesheet" href="./style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <script src="./script.js" defer></script>
 </head>
 <body>
     <header>
-        <img src="./images/expense-tracker-logo v2.png" alt="Logo Expense Tracker">
+        <img src="./images/expense-tracker-logo v3.png" alt="Logo Expense Tracker">
         <h1>My Expense Tracker</h1>
         <nav>
             <ul>
@@ -26,7 +28,7 @@
             <div class="budget-container">
                 <div class="before-jauge">
                     <div class="budget-left">
-                        <h3>Month Budget</h3>
+                        <h3>MONTH BUDGET</h3>
                         <div class="budget"></div>
                     </div>
                     <button>Edit</button>
@@ -38,14 +40,15 @@
             </div>
 
             <div class="expense-container">
-                <h3>Spent this month</h3>
+                <h3>SPENT THIS MONTH</h3>
                 <div class="expense"></div>
                 <p class="expense-mean" id="expense-mean">Mean of expenses : </p>
             </div>
 
             <div class="balance-container">
-                <h3>Balance</h3>
+                <h3>BALANCE</h3>
                 <div class="balance"></div>
+                <p class="balance-vide"></p>
             </div>
         </section>
 
@@ -81,7 +84,7 @@
         <section class="transactions">
             <div class="transactions-header">
                 <h2>Transactions</h2>
-                <div id = "transaction-total" class = "transaction-total"></div> <!--Nombre total de transactions-->
+                <div id = "transaction-total" class = "transaction-total">1000</div> <!--Nombre total de transactions-->
             </div>
 
             <div class="transactions-body">
@@ -89,12 +92,12 @@
 
                     <div class="category-class active" data-category="all">
                         <p class="category-text">All</p>
-                        <div class="category-total"></div> <!--Pour le nombre total de transactions par catégories-->
+                        <div class="category-total">1500</div> <!--Pour le nombre total de transactions par catégories-->
                     </div>
 
                     <div class="category-class" data-category="food">
                         <p class="category-text">Food</p>
-                        <div class="category-total"></div>
+                        <div class="category-total">1000</div>
                     </div>
 
                     <div class="category-class" data-category="transport">
@@ -119,7 +122,7 @@
 
                     <div class="category-class" data-category="shopping">
                         <p class="category-text">Shopping</p>
-                        <div class="category-total"></div>
+                        <div class="category-total">2584</div>
                     </div>
 
                     <div class="category-class" data-category="rest">
@@ -150,7 +153,9 @@
             </div>
 
 
-            <ul id="transactions-list"></ul>
+            <ul id="transactions-list">
+
+            </ul>
         </section>
     </main>
 

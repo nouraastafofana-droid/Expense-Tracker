@@ -1,0 +1,302 @@
+
+*{
+    background-color: #FBF6F7;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    padding: 30px;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+
+}
+
+header img{
+    border-radius: 50%;
+    height: 100%;
+    max-height: 50px;
+    width: auto;
+
+
+
+}
+
+header h1{
+    font-family: 'Parisienne', cursive;
+    color: rgb(68, 4, 20) ;
+    font-size: 2rem;
+    text-align: center;
+}
+
+header ul{
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+    margin: 0;
+    gap: 15px;
+    font-family: 'DM Serif Display', serif;
+    color: #C6337A;
+
+}
+
+header li:hover{
+    color: black;
+}
+
+.summary{
+    display: flex;
+    justify-content: space-between;
+    height: 150px;
+    margin-bottom: 20px;
+
+}
+
+.budget-container, .expense-container, .balance-container{
+    background-color: aliceblue;
+    border: lightgray 1px solid;
+    width: 480px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    font-family: 'DM Serif Display', serif;
+    color: #3f353d;
+    border-radius: 1rem;
+    justify-content: space-between;
+
+
+}
+
+.before-jauge {
+    background-color: aliceblue;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start ;
+
+}
+
+
+
+.before-jauge button{
+    font-family: 'DM Serif Display', serif;
+    color: #3f353d;
+    border: 0;
+    background-color: aliceblue;
+    font-size: medium;
+}
+
+.before-jauge button:hover{
+    color: #C6337A;
+}
+
+
+.budget-left h3, .budget-left .budget, .budget-left .jauge{
+    background-color: aliceblue;
+
+}
+
+
+#budget-meter{
+    background-color: aliceblue;
+    width: 100%;
+    height: 30px;
+    border-radius: 999px;
+}
+
+#budget-meter::-webkit-meter-bar{
+    border-radius: 999px;
+    border: none;
+    background: #FBF6F7;
+}
+
+#budget-meter::-webkit-meter-optimum-value{
+    background: linear-gradient(90deg,#C6337A , aliceblue) ;
+    border-radius: 999px;
+}
+
+.expense-container h3, .expense-container div, .expense-container p{
+    background-color: aliceblue;
+
+}
+
+.balance-container h3, .balance-container div{
+    background-color: aliceblue;
+
+}
+
+.budget-left .budget, .expense-container .expense, .balance-container .balance{
+    font-size: 50px;
+}
+
+
+.add-expense{
+    background-color: aliceblue;
+    border: lightgray 1px solid;
+    border-radius: 1rem;
+    padding: 20px;
+    font-family: 'DM Serif Display', serif;
+    color: #3f353d;
+    display: flex;
+    flex-direction: column;
+    gap:5px;
+    margin-bottom: 20px;
+
+}
+
+.add-expense h2{
+    background-color: aliceblue;
+    font-size: 25px;
+}
+
+.add-expense form{
+    background-color: aliceblue;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+
+}
+
+.add-expense input, .add-expense select, .add-expense button{
+    width:20% ;
+    height: auto;
+}
+
+.add-expense input, .add-expense select{
+    background-color:#FBF6F7;
+    border: lightgray 1px solid;
+    border-radius: 1rem;
+    padding: 5px;
+    text-align: center;
+    color: gray;
+}
+
+.add-expense button{
+    background-color:#C6337A ;
+    border: black 1px solid;
+    padding: 5px;
+    text-align: center;
+    font-family: 'DM Serif Display', serif;
+    color: #FBF6F7;
+    font-size: 15px;
+}
+
+.add-expense button:hover{
+    background-color: black;
+}
+
+
+.transactions{
+    background-color: aliceblue;
+    border: lightgray 1px solid;
+    border-radius: 1rem;
+    padding: 20px;
+    font-family: 'DM Serif Display', serif;
+    color: #3f353d;
+    margin-bottom: 20px;
+
+    display: flex;
+    flex-direction: column;
+    gap:5px;
+}
+
+.transactions div, .transactions p, .transactions h2, .transactions ul, .transactions li  {
+    background-color: aliceblue;
+
+}
+
+.transactions h2{
+    font-size: 25px;
+}
+
+.transactions-header{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+#transaction-total{
+    background-color:#FBF6F7;
+    color: gray;
+    border: lightgray 1px solid;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.transactions-body{
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+    align-items: center;
+
+}
+
+.category-filter{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    row-gap: 10px;
+    column-gap: 10px;
+
+}
+
+.category-class{
+    display: flex;
+    gap: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    align-items: baseline;
+    border-radius: 2rem;
+    color:#3f353d;
+    border: lightgray 1px solid;
+
+
+}
+
+.category-total{
+    color: gray;
+    font-size: 10px;
+
+}
+
+.delete-all{
+    font-family: 'DM Serif Display', serif;
+    color: #3f353d;
+    border: 0;
+    background-color: aliceblue;
+    font-size: medium;
+    border: #C6337A 1px solid;
+    padding: 5px;
+    border-radius: 2rem;
+}
+
+.delete-all:hover{
+    color: #C6337A;
+}
+
+.transactions ul{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+footer{
+    font-family: 'DM Serif Display', serif;
+    text-align: center;
+    color: #3f353d;
+
+}
