@@ -7,6 +7,12 @@ let transactionsList = document.querySelector("#transactions-list");
 
 let transactions = [];
 
+function saveToLocalStorage(){
+    localStorage.setItem("Trans", JSON.stringify(transactions));
+};
+
+
+
 function displayTransactionExpense(expense){
     let expenseToDisplay = document.createElement("li");
     expenseToDisplay.classList.add("expense-js");
@@ -43,12 +49,25 @@ function displayTransactionExpense(expense){
 
     deleteToDispay.addEventListener("click", ()=> {expenseToDisplay.remove();
 
-    transactions.splice( transactions.findIndex(transaction => transaction.id === expense.id)      ,1)
+    transactions.splice( transactions.findIndex(transaction => transaction.id === expense.id)      ,1);
+    saveToLocalStorage()
 });
 
-    console.log(transactions)
+
 
 }
+
+document.addEventListener("DOMContentLoaded", ()=>{
+    let currentTrans = localStorage.getItem("Trans");
+    if (currentTrans !== null){
+        transactions = JSON.parse(currentTrans);
+    }else{
+    transactions = [];
+    };
+    transactions.forEach((transaction)=> displayTransactionExpense(transaction));
+
+
+});
 
 
 
@@ -71,6 +90,7 @@ expenseForm.addEventListener("submit", (e)=> {
 transactions.push(expense);
 displayTransactionExpense(expense);
 expenseForm.reset();
+saveToLocalStorage();
 
 console.log(transactions);
 
