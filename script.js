@@ -10,6 +10,8 @@ const expenseBalance = document.querySelector(".balance");
 const expenseJauge = document.querySelector(".jauge-fill");
 const transactionTotal = document.querySelector(".transaction-total");
 const deleteAll = document.querySelector(".delete-all");
+const CategoryClass =  document.querySelectorAll(".category-class");
+
 
 let transactions = [];
 
@@ -108,6 +110,21 @@ function updateExpense(){
 
     expenseMean.textContent = `Mean of expenses : ${mean_expense}` ;
 
+
+    CategoryClass.forEach(
+    category =>  {
+        const CategoryName = category.dataset.category;
+        const CategoryTotal = category.querySelector(".category-total");
+
+        if (CategoryName === "all"){
+            CategoryTotal.textContent = transactions.length;
+        }else{
+            CategoryTotal.textContent = transactions.filter((transaction)=>transaction.expenseCategory === CategoryName
+        ).length;
+        }
+    }) ;
+
+
 };
 
 budgetbutton.addEventListener("click",
@@ -120,7 +137,8 @@ function filterTransactions(category){
         displayTransactionExpense(transaction));
 
 };
-CategoryClass = document.querySelectorAll(".category-class");
+
+
 
 CategoryClass.forEach(
     category => category.addEventListener("click", ()=> {
