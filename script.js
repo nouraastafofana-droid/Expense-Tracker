@@ -8,6 +8,8 @@ const expenseContainer = document.querySelector(".expense");
 const expenseMean = document.querySelector(".expense-mean");
 const expenseBalance = document.querySelector(".balance");
 const expenseJauge = document.querySelector(".jauge-fill");
+const transactionTotal = document.querySelector(".transaction-total");
+const deleteAll = document.querySelector(".delete-all");
 
 let transactions = [];
 
@@ -102,6 +104,8 @@ function updateExpense(){
     expenseBalance.style.color = solde < 0 ? "red" : "var(--color-text-main)";
 
     expenseContainer.textContent = total_expense;
+    transactionTotal.textContent = transactions.length;
+
     expenseMean.textContent = `Mean of expenses : ${mean_expense}` ;
 
 };
@@ -134,7 +138,16 @@ CategoryClass.forEach(
     }
 
 
-         ) )
+         ) );
+
+deleteAll.addEventListener("click", ()=> {
+    transactions = [];
+    transactionsList.innerHTML = "";
+    saveToLocalStorage();
+    updateExpense();
+
+
+});
 
 
 document.addEventListener("DOMContentLoaded", ()=>{
