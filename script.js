@@ -99,6 +99,7 @@ function updateExpense(){
 
     let solde = +Budgets - total_expense;
     expenseBalance.textContent = solde;
+    expenseBalance.style.color = solde < 0 ? "red" : "var(--color-text-main)";
 
     expenseContainer.textContent = total_expense;
     expenseMean.textContent = `Mean of expenses : ${mean_expense}` ;
@@ -108,6 +109,32 @@ function updateExpense(){
 budgetbutton.addEventListener("click",
     ()=>{editBudget()}
 );
+
+function filterTransactions(category){
+    transactionsList.innerHTML = "";
+    transactions.filter( transaction => transaction.expenseCategory === category).forEach(transaction =>
+        displayTransactionExpense(transaction));
+
+};
+CategoryClass = document.querySelectorAll(".category-class");
+
+CategoryClass.forEach(
+    category => category.addEventListener("click", ()=> {
+        // Retirer active de tous les filtres
+        CategoryClass.forEach(cat => cat.classList.remove("active"));
+        // Ajouter active sur celui cliqué
+        category.classList.add("active");
+
+        if (category.dataset.category === "all"){
+            transactionsList.innerHTML = "";
+            transactions.forEach(transaction => displayTransactionExpense(transaction));
+        }else{
+            filterTransactions(category.dataset.category)
+        }
+    }
+
+
+         ) )
 
 
 document.addEventListener("DOMContentLoaded", ()=>{
