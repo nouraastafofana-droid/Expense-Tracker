@@ -4,6 +4,8 @@ let expenseForm = document.querySelector("#expense-form");
 
 let transactionsList = document.querySelector("#transactions-list");
 
+const expenseContainer = document.querySelector(".expense");
+const expenseMean = document.querySelector(".expense-mean");
 
 let transactions = [];
 
@@ -11,7 +13,15 @@ function saveToLocalStorage(){
     localStorage.setItem("Trans", JSON.stringify(transactions));
 };
 
+function updateExpense(){
+    let total_expense = transactions.reduce(  (sum, currentValue)=> sum + currentValue.expenseAmount ,0   );
 
+    let mean_expense = transactions.length >0 ? total_expense/transactions.length : 0;
+
+    expenseContainer.textContent = total_expense;
+    expenseMean.textContent = `Mean of expenses : ${mean_expense}` ;
+
+};
 
 function displayTransactionExpense(expense){
     let expenseToDisplay = document.createElement("li");
@@ -50,12 +60,18 @@ function displayTransactionExpense(expense){
     deleteToDispay.addEventListener("click", ()=> {expenseToDisplay.remove();
 
     transactions.splice( transactions.findIndex(transaction => transaction.id === expense.id)      ,1);
-    saveToLocalStorage()
+    saveToLocalStorage();
+    updateExpense();
 });
 
+};
 
 
-}
+
+/*function updateMeanExpense(){
+    let total_expense = transactions.reduce(  (sum, currentValue)=> sum + currentValue.expenseAmount ,0         );
+    return total_expense;
+}*/
 
 document.addEventListener("DOMContentLoaded", ()=>{
     let currentTrans = localStorage.getItem("Trans");
@@ -65,6 +81,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
     transactions = [];
     };
     transactions.forEach((transaction)=> displayTransactionExpense(transaction));
+    updateExpense();
 
 
 });
@@ -91,6 +108,7 @@ transactions.push(expense);
 displayTransactionExpense(expense);
 expenseForm.reset();
 saveToLocalStorage();
+updateExpense();
 
 console.log(transactions);
 
