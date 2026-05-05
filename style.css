@@ -329,3 +329,46 @@ footer{
     color: var(--color-text-main)
 
 }
+
+.expense-js{
+    display: flex;
+    border:  1px solid var(--color-border);
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    border-radius: 1rem;
+
+}
+
+.expense-category-js{
+    font-size: 13px;
+    padding: 3px 10px;
+    border-radius: 999px;
+    border: 1px solid var(--color-border);
+    color: var(--color-text-muted);
+}
+
+.expense-amount-js {
+    font-weight: 500;
+    color: var(--color-primary);
+}
+
+.expense-date-js {
+    font-size: 13px;
+    color: var(--color-text-muted);
+}
+
+.expense-delete-js{
+    background: none;
+    border: 0;
+    font-size: 16px;
+    cursor: pointer;
+
+
+}
+
+.expense-delete-js:hover{
+    color: var(--color-primary);
+}
