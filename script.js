@@ -6,6 +6,8 @@ let transactionsList = document.querySelector("#transactions-list");
 
 const expenseContainer = document.querySelector(".expense");
 const expenseMean = document.querySelector(".expense-mean");
+const expenseBalance = document.querySelector(".balance");
+const expenseJauge = document.querySelector(".jauge-fill");
 
 let transactions = [];
 
@@ -13,15 +15,7 @@ function saveToLocalStorage(){
     localStorage.setItem("Trans", JSON.stringify(transactions));
 };
 
-function updateExpense(){
-    let total_expense = transactions.reduce(  (sum, currentValue)=> sum + currentValue.expenseAmount ,0   );
 
-    let mean_expense = transactions.length >0 ? total_expense/transactions.length : 0;
-
-    expenseContainer.textContent = total_expense;
-    expenseMean.textContent = `Mean of expenses : ${mean_expense}` ;
-
-};
 
 function displayTransactionExpense(expense){
     let expenseToDisplay = document.createElement("li");
@@ -66,12 +60,55 @@ function displayTransactionExpense(expense){
 
 };
 
+const budgetContainer = document.querySelector(".budget");
+const budgetbutton = document.querySelector(".before-jauge button");
+let budgetvar = 0;
+let Budgets = "";
+function editBudget(){
 
 
-/*function updateMeanExpense(){
-    let total_expense = transactions.reduce(  (sum, currentValue)=> sum + currentValue.expenseAmount ,0         );
-    return total_expense;
-}*/
+    let inputval = document.createElement("input");
+    inputval.setAttribute('type', "number"     );
+    inputval.setAttribute('value', budgetContainer.innerText );
+
+    budgetContainer.replaceWith(inputval);
+
+    Budgets = budgetvar;
+    inputval.addEventListener('keydown', (e)=> {
+        if (e.key === "Enter"){
+            budgetContainer.textContent = inputval.value;
+            inputval.replaceWith(budgetContainer);
+            budgetvar = +inputval.value;
+
+            localStorage.setItem("Budget", JSON.stringify(budgetvar));
+
+            updateExpense();
+        }
+    })
+
+};
+
+function updateExpense(){
+    let total_expense = transactions.reduce(  (sum, currentValue)=> sum + currentValue.expenseAmount ,0   );
+
+    let mean_expense = transactions.length >0 ? total_expense/transactions.length : 0;
+
+    let pourcentage = +Budgets>0 ? Math.min ( (total_expense / +Budgets)*100, 100 ): 0 ;
+    expenseJauge.style.width = `${pourcentage}%`;
+    console.log(pourcentage);
+
+    let solde = +Budgets - total_expense;
+    expenseBalance.textContent = solde;
+
+    expenseContainer.textContent = total_expense;
+    expenseMean.textContent = `Mean of expenses : ${mean_expense}` ;
+
+};
+
+budgetbutton.addEventListener("click",
+    ()=>{editBudget()}
+);
+
 
 document.addEventListener("DOMContentLoaded", ()=>{
     let currentTrans = localStorage.getItem("Trans");
@@ -81,8 +118,18 @@ document.addEventListener("DOMContentLoaded", ()=>{
     transactions = [];
     };
     transactions.forEach((transaction)=> displayTransactionExpense(transaction));
-    updateExpense();
 
+
+    let currentBudg = localStorage.getItem("Budget");
+    if (currentBudg != null){
+        Budgets = JSON.parse(currentBudg);
+    }else{
+        Budgets = "";
+    }
+
+    budgetContainer.textContent = Budgets;
+
+    updateExpense();
 
 });
 
