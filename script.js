@@ -80,12 +80,14 @@ function editBudget(){
 
     budgetContainer.replaceWith(inputval);
 
-    Budgets = budgetvar;
+
     inputval.addEventListener('keydown', (e)=> {
         if (e.key === "Enter"){
             budgetContainer.textContent = inputval.value;
             inputval.replaceWith(budgetContainer);
             budgetvar = +inputval.value;
+
+            Budgets = budgetvar;
 
             localStorage.setItem("Budget", JSON.stringify(budgetvar));
 
