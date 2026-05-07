@@ -141,6 +141,10 @@ function filterTransactions(category){
 
 };
 
+function closeModaleFunc(){
+    overlay.style.display = "none";
+    modale.style.display = "none";
+}
 
 
 CategoryClass.forEach(
@@ -172,6 +176,8 @@ deleteAll.addEventListener("click", ()=> {
 
 CurrentMonthvar ="";
 document.addEventListener("DOMContentLoaded", ()=>{
+    closeModaleFunc();
+
     let moisActuel = `${new Date().toLocaleString('en-US', {month: 'long'})} ${new Date().getFullYear()}`;
     let moisSauvegarde = localStorage.getItem("moisSauvegarde");
     if (moisActuel !== moisSauvegarde){
@@ -243,3 +249,21 @@ updateExpense();
 console.log(transactions);
 
 });
+
+const tweaks = document.querySelector("nav li:nth-child(2)");
+const overlay = document.querySelector(".overlay");
+const modale = document.querySelector(".modale");
+tweaks.addEventListener("click", ()=>{
+    overlay.style.display = "block";
+    modale.style.display = "flex";
+
+})
+
+const closeModale = document.querySelector(".close-modale");
+closeModale.addEventListener("click", ()=>{
+    closeModaleFunc();
+})
+
+overlay.addEventListener("click", ()=>{
+    closeModaleFunc();
+})

@@ -372,3 +372,105 @@ footer{
 .expense-delete-js:hover{
     color: var(--color-primary);
 }
+
+.overlay{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:  rgba(0, 0, 0, 0.5);
+    z-index: 100;
+}
+
+.modale{
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--color-bg-card);
+    border-radius: 1rem;
+    padding: 20px;
+    width: 300px;
+    z-index: 200;
+    color: var(--color-text-main);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.mode{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.modale-header, .language, .devise{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modale-header h3{
+    font-size: 25px;
+}
+.mode p, .language p, .devise p{
+    font-size: 18px;
+}
+
+.close-modale{
+    background: none;
+    border: none;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.language button, .devise button{
+    background: none;
+    padding: 8px;
+    border: 0.5px solid var(--color-text-muted);
+    border-radius: 1rem;
+    cursor: pointer;
+}
+
+.language button:hover, .devise button:hover{
+    color:#C6337A;
+}
+
+.mode input{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    position: relative;
+    height: 30px;
+    width: 75px;
+    background-color: #FFFFFF;
+    border-radius: 5rem;
+    transition: background-color .2s ;
+    border: 1px solid var(--color-text-main);
+
+
+}
+
+.mode input::after{
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 20%;
+    transform: translate(-50%,-50%);
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background-color: black;
+    transition: left .2s;
+}
+
+.mode input:checked{
+    background: rgb(3, 153, 240);
+}
+
+.mode input:checked::after{
+    left: 80%;
+}
