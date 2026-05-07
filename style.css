@@ -385,7 +385,7 @@ footer{
 }
 
 .modale{
-    display: none;
+
     position: fixed;
     top: 50%;
     left: 50%;
@@ -473,4 +473,12 @@ footer{
 
 .mode input:checked::after{
     left: 80%;
+}
+
+.dark {
+    --color-bg-page: #1a1a1a;
+    --color-bg-card: #2d2d2d;
+    --color-text-main: #ffffff;
+    --color-border: #444444;
+    --color-text-muted: #aaaaaa;
 }

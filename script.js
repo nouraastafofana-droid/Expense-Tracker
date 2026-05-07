@@ -178,6 +178,17 @@ CurrentMonthvar ="";
 document.addEventListener("DOMContentLoaded", ()=>{
     closeModaleFunc();
 
+    let modeValue = localStorage.getItem("mode");
+    if (modeValue === "true"){
+
+        document.body.classList.add("dark");
+        darkMode.checked = true;
+
+    }else{
+
+    };
+
+
     let moisActuel = `${new Date().toLocaleString('en-US', {month: 'long'})} ${new Date().getFullYear()}`;
     let moisSauvegarde = localStorage.getItem("moisSauvegarde");
     if (moisActuel !== moisSauvegarde){
@@ -267,3 +278,11 @@ closeModale.addEventListener("click", ()=>{
 overlay.addEventListener("click", ()=>{
     closeModaleFunc();
 })
+
+const darkMode = document.querySelector("#dark-mode-toggle");
+
+darkMode.addEventListener("change", ()=>{
+        document.body.classList.toggle("dark");
+        localStorage.setItem("mode", darkMode.checked);
+    }
+)
