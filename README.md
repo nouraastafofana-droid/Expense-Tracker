@@ -39,6 +39,7 @@ Or
 
 ```bash
 git clone https://github.com/nouraastafofana-droid/Expense-Tracker
+```
 
 ---
 

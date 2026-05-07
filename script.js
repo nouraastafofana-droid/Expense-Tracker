@@ -109,7 +109,7 @@ function setLanguage(lang){
     const traduction = translations[lang];
 
     document.querySelector("h1").textContent = traduction.titre;
-    document.querySelector("nav li:nth-child(3)").textContent = traduction.APropos;
+    document.querySelector("nav li:nth-child(3) a").textContent = traduction.APropos;
     document.querySelector(".budget-left h3").textContent = traduction.budgetMois;
     document.querySelector(".before-jauge button").textContent = traduction.editMois;
     document.querySelector(".expense-container h3").textContent = traduction.depenseMois;
