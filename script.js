@@ -87,7 +87,16 @@ const translations = {
         langue:"Language:",
         devise:"Currency:"
     }
-}
+};
+
+const currencies = {
+    eur:{
+        val:"€"
+    },
+    usd:{
+        val:"$"
+    }
+};
 
 
 let transactions = [];
@@ -151,6 +160,8 @@ function setLanguage(lang){
 
 }
 
+
+
 langselected = document.querySelectorAll(".language button");
 langselected.forEach(i => i.addEventListener("click", () => {
     langselected.forEach(btn => btn.classList.remove("active"));
@@ -159,6 +170,25 @@ langselected.forEach(i => i.addEventListener("click", () => {
     setLanguage(languageValue);
     localStorage.setItem("langStored", languageValue);
     updateExpense();
+}));
+
+currselected = document.querySelectorAll(".devise button");
+currselected.forEach( i=> i.addEventListener("click", ()=>{
+    currselected.forEach(btn=>btn.classList.remove("active"));
+    i.classList.add("active");
+    currencyValue = i.dataset.currency;
+    //setCurrency(currencyValue);
+    localStorage.setItem("currencyStored", currencyValue);
+    updateExpense();
+    budgetContainer.textContent = `${Budgets}${currencies[currencyValue].val}`;
+
+    transactionsList.innerHTML ="";
+    transactions.forEach((transaction)=> displayTransactionExpense(transaction));
+
+
+
+
+
 }));
 
 
@@ -177,7 +207,7 @@ function displayTransactionExpense(expense){
     expenseNameToDisplay.classList.add("expense-name-js");
 
     let expenseAmountToDisplay = document.createElement("div");
-    expenseAmountToDisplay.textContent = `${expense.expenseAmount}`;
+    expenseAmountToDisplay.textContent = `${expense.expenseAmount}${currencies[currencyValue].val}`;
     expenseAmountToDisplay.classList.add("expense-amount-js");
 
     let expenseDateToDisplay = document.createElement("div");
@@ -222,7 +252,7 @@ function editBudget(){
 
     inputval.addEventListener('keydown', (e)=> {
         if (e.key === "Enter"){
-            budgetContainer.textContent = inputval.value;
+            budgetContainer.textContent = `${inputval.value}${currencies[currencyValue].val}`;
             inputval.replaceWith(budgetContainer);
             budgetvar = +inputval.value;
 
@@ -237,6 +267,7 @@ function editBudget(){
 };
 
 let languageValue = "en"; // langue par défaut
+let currencyValue = "usd"; //currency par défaut pour coller à langue par défaut = en
 
 function updateExpense(){
     let total_expense = transactions.reduce(  (sum, currentValue)=> sum + currentValue.expenseAmount ,0   );
@@ -248,13 +279,13 @@ function updateExpense(){
     console.log(pourcentage);
 
     let solde = +Budgets - total_expense;
-    expenseBalance.textContent = solde;
+    expenseBalance.textContent = `${solde}${currencies[currencyValue].val}`;
     expenseBalance.style.color = solde < 0 ? "red" : "var(--color-text-main)";
 
-    expenseContainer.textContent = total_expense;
+    expenseContainer.textContent = `${total_expense}${currencies[currencyValue].val}`;
     transactionTotal.textContent = transactions.length;
 
-    expenseMean.textContent = `${translations[languageValue].moyDepense} : ${mean_expense}` ;
+    expenseMean.textContent = `${translations[languageValue].moyDepense} : ${mean_expense}${currencies[currencyValue].val}` ;
 
 
     CategoryClass.forEach(
@@ -325,6 +356,9 @@ document.addEventListener("DOMContentLoaded", ()=>{
     setLanguage(languageValue);
     document.querySelector(`.language button[data-lang="${languageValue}"]`).classList.add("active");
 
+    currencyValue = localStorage.getItem("currencyStored") || "usd";
+    document.querySelector(`.devise button[data-currency = "${currencyValue}"]`).classList.add("active");
+
 
 
     let moisSauvegarde = localStorage.getItem("moisSauvegarde");
@@ -374,7 +408,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
         Budgets = "";
     }
 
-    budgetContainer.textContent = Budgets;
+    budgetContainer.textContent = `${Budgets}${currencies[currencyValue].val}`;
 
 
     updateExpense();
