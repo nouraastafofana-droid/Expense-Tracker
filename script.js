@@ -11,6 +11,9 @@ const expenseJauge = document.querySelector(".jauge-fill");
 const transactionTotal = document.querySelector(".transaction-total");
 const deleteAll = document.querySelector(".delete-all");
 const CategoryClass =  document.querySelectorAll(".category-class");
+const CurrentMonth = document.querySelector("nav li:first-child");
+//const tweaks = document.querySelector("nav li:second-child");
+//const AboutUs = document.querySelector("nav li:third-child");
 
 
 let transactions = [];
@@ -167,8 +170,26 @@ deleteAll.addEventListener("click", ()=> {
 
 });
 
-
+CurrentMonthvar ="";
 document.addEventListener("DOMContentLoaded", ()=>{
+    let moisActuel = `${new Date().toLocaleString('en-US', {month: 'long'})} ${new Date().getFullYear()}`;
+    let moisSauvegarde = localStorage.getItem("moisSauvegarde");
+    if (moisActuel !== moisSauvegarde){
+        transactions = [];
+
+        localStorage.removeItem("Budget");
+        localStorage.removeItem("Trans");
+
+        localStorage.setItem("moisSauvegarde", moisActuel);
+
+        moisSauvegarde = moisActuel
+    }
+    else{
+
+    }
+    CurrentMonth.textContent = moisSauvegarde;
+
+
     let currentTrans = localStorage.getItem("Trans");
     if (currentTrans !== null){
         transactions = JSON.parse(currentTrans);
@@ -188,6 +209,10 @@ document.addEventListener("DOMContentLoaded", ()=>{
     budgetContainer.textContent = Budgets;
 
     updateExpense();
+
+
+
+
 
 });
 
