@@ -38,7 +38,7 @@ Access it directly via GitHub Pages : [Live Demo](https://nouraastafofana-droid.
 Or
 
 ```bash
-git clone https://github.com/nouraastafofana-droid/Expense-Tracker
+git clone https://github.com/nouraastafofana-droid/Expense-Tracker.git
 ```
 
 ---
