@@ -4,7 +4,7 @@ A simple and clean expense management app built to practice JavaScript, DOM mani
 
 The app allows you to manage a monthly budget, track your expenses and store data directly in the browser.
 
-![Aperçu de l'application](./images/Demo_expense_tracker )
+![Aperçu de l'application](./images/Demo_expense_tracker.png)
 
 ---
 
@@ -33,11 +33,12 @@ The app allows you to manage a monthly budget, track your expenses and store dat
 
 ## Run locally
 
-```bash
-git clone <repository-link>
-```
+Access it directly via GitHub Pages : [Live Demo](https://nouraastafofana-droid.github.io/Expense-Tracker/)
 
-Or access it directly via GitHub Pages : [Link to be added]
+Or
+
+```bash
+git clone https://github.com/nouraastafofana-droid/Expense-Tracker
 
 ---
 
