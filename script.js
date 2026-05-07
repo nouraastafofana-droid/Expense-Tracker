@@ -17,7 +17,7 @@ const CurrentMonth = document.querySelector("nav li:first-child");
 
 const translations = {
     fr:{
-        APropos: "À propos de nous",
+        APropos: "À propos",
         budgetMois: "BUDGET DU MOIS",
         editMois: "Editer",
         depenseMois:"DÉPENSÉ CE MOIS",
@@ -37,7 +37,7 @@ const translations = {
         logement: "Logement",
         sante: "Santé",
         sub:"Abonnements",
-        shopping:"Shooping",
+        shopping:"Shopping",
         rest:"Restaurants",
         voyage:"Voyages",
         hobby:"Hobbies",
@@ -73,7 +73,7 @@ const translations = {
         logement: "Housing",
         sante: "Health",
         sub:"Subscriptions",
-        shopping:"Shooping",
+        shopping:"Shopping",
         rest:"Restaurants",
         voyage:"Trips",
         hobby:"Hobbies",
@@ -272,7 +272,7 @@ let currencyValue = "usd"; //currency par défaut pour coller à langue par déf
 function updateExpense(){
     let total_expense = transactions.reduce(  (sum, currentValue)=> sum + currentValue.expenseAmount ,0   );
 
-    let mean_expense = transactions.length >0 ? total_expense/transactions.length : 0;
+    let mean_expense = Math.round(transactions.length >0 ? total_expense/transactions.length : 0);
 
     let pourcentage = +Budgets>0 ? Math.min ( (total_expense / +Budgets)*100, 100 ): 0 ;
     expenseJauge.style.width = `${pourcentage}%`;
