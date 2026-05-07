@@ -489,3 +489,69 @@ footer{
     --color-border: #444444;
     --color-text-muted: #aaaaaa;
 }
+
+
+
+
+
+/*Responsive*/
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+
+    header h1 {
+        position: static; /* annule le position: absolute */
+        transform: none;  /* annule le translateX(-50%) */
+        left: auto;
+    }
+
+    .header-logo {
+        flex: none;
+    }
+
+    header nav {
+        flex: none;
+        justify-content: center;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .summary {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .budget-container,
+    .expense-container,
+    .balance-container {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .add-expense form {
+        flex-direction: column;
+    }
+
+    .add-expense input,
+    .add-expense select,
+    .add-expense button {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .transactions-body {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .delete-all {
+        width: 100%;
+        text-align: center;
+    }
+}
