@@ -439,6 +439,13 @@ footer{
     color:#C6337A;
 }
 
+.language button.active, .devise button.active{
+    background-color: var(--color-primary);
+    color: white;
+    border-color: var(--color-primary);
+
+}
+
 .mode input{
     -webkit-appearance: none;
     -moz-appearance: none;
